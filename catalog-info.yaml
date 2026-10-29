@@ -1,0 +1,22 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: DSSP-SpringPackage-Demo-16Oct
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: DSSP-SpringPackage-Demo-16Oct
+    sonarqube.org/project-key: dssp-springpackage-demo-16oct
+    github.com/project-slug: BackstageSSPPoC/DSSP-SpringPackage-Demo-16Oct
+    argocd/app-name: dssp-springpackage-demo-16oct-dev
+    prometheus.io/rule: "kube_pod_status_phase{pod=~'dssp-springpackage-demo-16oct.*'}|phase,kube_pod_container_status_restarts_total{pod=~'dssp-springpackage-demo-16oct.*'}|container"
+    prometheus.io/alert: "KubePodCrashLooping,KubeDeploymentReplicasMismatch,KubePodNotReady,KubeContainerWaiting,KubeContainerOOMKilled,KubeDeploymentRolloutStuck"
+    prometheus.io/labels: "namespace=dev"
+    grafana/overview-dashboard: 'http://34.29.242.32/grafana/d/ffuuiuytw0f0gb/backstage-view?var-pod_prefix=dssp-springpackage-demo-16oct&var-namespace=dev&kiosk' 
+  tags:
+    - java-maven
+    - scaffolded
+spec:
+  type: service
+  lifecycle: Dev
+  owner: user:default/chaitanya-shekhar-pandey
+  system: dssp-platform
